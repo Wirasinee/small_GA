@@ -46,7 +46,7 @@ class GA {
         this.popMutation = popMutation;
     }
 
-    Map<String, Chromosome> createTable(Map<String, Chromosome> mapChromosome) {
+    public Map<String, Chromosome> createTable(Map<String, Chromosome> mapChromosome) {
 
         for (int i = 0; i < populationSize; i++) {
             String dec = "";
@@ -67,7 +67,7 @@ class GA {
         return mapChromosome;
     }
 
-    Map<String, Chromosome> createTableParent(Map<String, Chromosome> mapChromosome) {
+    public Map<String, Chromosome> createTableParent(Map<String, Chromosome> mapChromosome) {
         sumPercentage = 0;
         for (int i = 1; i <= populationSize; i++) {
             String key = "ch" + i;
@@ -80,25 +80,25 @@ class GA {
         return mapChromosome;
     }
     
-    void printTableChromosome(Map<String, Chromosome> mapChromosome){
+    public void printTableChromosome(Map<String, Chromosome> mapChromosome){
     System.out.println("Table Chromosome (indiv|chromosome|value|fitness)");
-        for (int i=1;i<mapChromosome.size();i++) {
+        for (int i=1;i<=mapChromosome.size();i++) {
             String key="ch"+i;
             System.out.println(key + "  " + Arrays.toString(mapChromosome.get(key).getChromosome()) + "  " + mapChromosome.get(key).getValue()
                     + "   " + mapChromosome.get(key).getFitness() );
         }
     }
 
-    void printTableChromosomeAll(Map<String, Chromosome> mapChromosome) {
+    public void printTableChromosomeAll(Map<String, Chromosome> mapChromosome) {
         System.out.println("Table Chromosome (indiv|chromosome|value|fitness|percentage|sumPercentage)");
-        for (int i=1;i<mapChromosome.size();i++) {
+        for (int i=1;i<=mapChromosome.size();i++) {
             String key="ch"+i;
             System.out.println(key + "  " + Arrays.toString(mapChromosome.get(key).getChromosome()) + "  " + mapChromosome.get(key).getValue()
                     + "   " + mapChromosome.get(key).getFitness() + "   " + mapChromosome.get(key).getPercentage() + "   " + mapChromosome.get(key).getSumPercentage());
         }
     }
 
-    String[] createMatingPool(Map<String, Chromosome> mapChromosome) {
+    public String[] createMatingPool(Map<String, Chromosome> mapChromosome) {
         System.out.println("invividual=>matingPool");
 
         for (int i = 0; i < populationSize; i++) {
@@ -122,7 +122,7 @@ class GA {
         return matingPool;
     }
 
-    Map<String, Chromosome> crossover(Map<String, Chromosome> mapChromosome, Map<String, Chromosome> mapNewChromosome) {
+    public Map<String, Chromosome> crossover(Map<String, Chromosome> mapChromosome, Map<String, Chromosome> mapNewChromosome) {
         int z = 0;
         int ch = 1;
         for (int i = 0; i < populationSize / 2; i++) {
@@ -153,7 +153,7 @@ class GA {
         return mapNewChromosome;
     }
 
-    void onePointMutation(Map<String, Chromosome> mapNewChromosome) {
+    public void onePointMutation(Map<String, Chromosome> mapNewChromosome) {
         for (int i = 1; i <= populationSize; i++) {
             int lk = m.RandomTo(0, chromosomeSize); //สุ่มตำแหน่ง
             //System.out.println(lk);
@@ -179,7 +179,7 @@ class GA {
         
     }
 
-    void sumFitnessOffspring(Map<String, Chromosome> mapNewChromosome) {
+    public void sumFitnessOffspring(Map<String, Chromosome> mapNewChromosome) {
         //offspring
         indiv = new int[chromosomeSize];
         sumFitness = 0;
