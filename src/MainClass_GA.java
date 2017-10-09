@@ -60,7 +60,7 @@ public class MainClass_GA {
         return result;
     }
 
-    public int RandomZeroToOne() {
+    public int randomZeroOrOne() {
         double r = Math.random();
         if (r > 0.5) {
             return 1;
